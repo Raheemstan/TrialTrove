@@ -51,4 +51,11 @@ TrialTrove empowers developers to refine their skills through systematic testing
                                                     The api takes your website url and give you back a shortened url. The idea is to minimize the web page address into something that's easier to remember and track.                                                    
 ## Completion Checklist       
 
-| Tasks                 | Completion |            | --------------------- | ---------- |            | Git push              | [ ]        |            | Broadcasrting         | [ ]        |            | Unit Test             | [ ]        |            | Dockerize Application | [ ]        |            | Microservices         | [ ]        |            | Laravel Packages      |            
+| Tasks                 | Completion |
+| --------------------- | ---------- |
+| Git push              | [ ]        |
+| Broadcasrting         | [ ]        |
+| Unit Test             | [ ]        |
+| Dockerize Application | [ ]        |
+| Microservices         | [ ]        |
+| Laravel Packages      |            
