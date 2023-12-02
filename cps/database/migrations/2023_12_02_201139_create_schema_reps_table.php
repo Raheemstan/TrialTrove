@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('schema_reps', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('username');
-            $table->string('password');
-            $table->string('email')->unique();
-            $table->string('contact')->nullable();
-            $table->string('role');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->rememberToken();
+            $table->uuid('car_park_id');
+            $table->string('schematic_image');
+            $table->string('status');
+            $table->string('labels');
+            $table->foreign('car_park_id')->references('id')->on('car_parks');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('schema_reps');
     }
 };

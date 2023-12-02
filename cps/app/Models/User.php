@@ -18,11 +18,32 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+        'contact',
+        'role'
     ];
 
+
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
+    public function carParks()
+    {
+        return $this->hasMany(CarPark::class, 'operator_id', 'id');
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'user_id', 'id');
+    }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'user_id', 'id');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
