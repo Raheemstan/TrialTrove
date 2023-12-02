@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,9 +14,10 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
+        'id',
         'username',
         'email',
         'password',
@@ -25,29 +25,10 @@ class User extends Authenticatable
         'role'
     ];
 
-
-    protected $primaryKey = 'id';
-    public $incrementing = false;
-    protected $keyType = 'string';
-
-    public function carParks()
-    {
-        return $this->hasMany(CarPark::class, 'operator_id', 'id');
-    }
-
-    public function bookings()
-    {
-        return $this->hasMany(Booking::class, 'user_id', 'id');
-    }
-
-    public function feedbacks()
-    {
-        return $this->hasMany(Feedback::class, 'user_id', 'id');
-    }
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -57,10 +38,55 @@ class User extends Authenticatable
     /**
      * The attributes that should be cast.
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
+     * The data type of the primary key.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
+     * Get the car parks associated with the user.
+     */
+    public function carParks()
+    {
+        return $this->hasMany(CarPark::class, 'operator_id', 'id');
+    }
+
+    /**
+     * Get the bookings associated with the user.
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'user_id', 'id');
+    }
+
+    /**
+     * Get the feedbacks associated with the user.
+     */
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'user_id', 'id');
+    }
 }

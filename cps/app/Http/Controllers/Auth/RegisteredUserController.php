@@ -39,7 +39,8 @@ class RegisteredUserController extends Controller
         ]);
 
         $user = User::create([
-            'username' => $request->name,
+            'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(), // 'id' => 'f7c5c4e4-9b88-4d70-9ef3-8d4a5ab4c1e0
+            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'contact' => $request->contact,
